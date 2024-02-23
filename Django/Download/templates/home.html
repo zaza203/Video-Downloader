@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Video Downloader</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .jumbotron {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .menu-content {
+            margin-top: 100px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .main .nav-link {
+            color: white;
+        }
+        #get-vid {
+            margin-top: 1px;
+        }
+
+        .frame iframe{
+            width: 15cm;
+            height: 8cm;
+            border: none;
+        }
+
+        .list-container {
+            display: block;
+            padding-bottom: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>Easy Video Downloader</h1>
+        <div class="container manus">
+            <ul class="nav nav-tabs main">
+                <li class="nav-item">
+                    <a class="nav-link active" id="youtube-tab" data-toggle="tab" href="#youtube">YouTube</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="facebook-tab" data-toggle="tab" href="#facebook">FaceBook</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tiktok-tab" data-toggle="tab" href="#tiktok">TikTok</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="instagram-tab" data-toggle="tab" href="#instagram">Instagram</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tab-content menu-content">
+
+        <div id="error-msg"></div>
+
+        <div class="container yt-menu tab-pane fade show active" id="youtube">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="videos-tab" data-toggle="tab" href="#videos">Videos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="playlist-tab" data-toggle="tab" href="#playlist">Playlist</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="videos">
+                    <form action="get-videos" method="GRT">
+                        {% csrf_token %}
+                        {% block link %}
+                        <label for="url">Enter YouTube Video URL</label>
+                        <input id="url" name="url" type="text" class="form-control" placeholder="Paste url here" required><br><br>
+                        {% endblock %}
+                        <button id="get-vid" type="submit" class="btn btn-primary">Get Video</button><br><br>
+                    </form>
+                </div>
+
+                    {% block content %}
+
+                    {% endblock %}
+                
+
+                <div class="tab-pane fade" id="playlist">
+                    <form action="get-playlist" method="GRT">
+                        {% csrf_token %}
+                        <label for="url_playlist">Enter YouTube Playlist URL</label>
+                        <input type="text" class="form-control" name="play-url" placeholder="Paste playlist url here">
+                        <button type="submit" class="btn btn-success">Get
+                            Playlist</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="container fb-content tab-pane fade" id="facebook">
+                <div class="" id="fb-video">
+                    <form id="downloadForm" action="" method="post">
+                        {% csrf_token %}
+                        <label for="url">Enter FaceBook Video URL</label>
+                        <input type="text" class="form-control" id="url" name="url" required>
+                        <button type="button" class="btn btn-primary" onclick="download('downloadForm')">Get Video</button>
+                    </form>
+                </div>
+        </div>
+
+        <div class="container tk-content tab-pane fade" id="tiktok">
+            <div class="" id="tk-video">
+                <form id="downloadForm" action="" method="post">
+                    {% csrf_token %}
+                    <label for="url">Enter TikTok Video URL</label>
+                    <input type="text" class="form-control" id="url" name="url" required>
+                    <button type="button" class="btn btn-primary" onclick="download('downloadForm')">Get Video</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container in-content tab-pane fade" id="instagram">
+            <div class="" id="in-video">
+                <form id="downloadForm" action="" method="post">
+                    <!-- {% csrf_token %} -->
+                    <label for="url">Enter Instagram Video URL</label>
+                    <input type="text" class="form-control" id="url" name="url" required>
+                    <button type="button" class="btn btn-primary" onclick="download('downloadForm')">Get Video</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

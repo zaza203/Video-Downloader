@@ -1,0 +1,50 @@
+
+{% extends 'home.html' %}
+
+
+{% block link %}
+<label for="url">Enter YouTube Video URL</label>
+<input id="url" name="url" type="text" class="form-control" placeholder="Paste url here" required><br><br>
+{% endblock %}
+
+
+{%block content%}
+    <div class="list-container">
+        <div class = "frame">
+            <h3 class="title">{{ title }}</h3>
+
+
+            <!-- {% if "playlist" in url %}
+                <form action="{% url 'download_playlist' %}">
+                    {% csrf_token %}
+                    <input type="checkbox" id="select-all" checked>Select All<br><br>
+                    {% for i in range(videos|length) %}
+                    <input type="checkbox" name="video{{ i }}" value="{{ video.id }} checked"><br><br>
+                    <iframe src="{{ embed.i }}"></iframe><br><br>
+                    <select name="resolution{{ i }}">
+                        <option value="default">Select resolution</option>
+                        {% for resolution in videos.i.resolution %}
+                        <option value="{{ resolution }}">{{ resolution }}</option>
+                        {% endfor %}
+                    </select><br><br>
+                    {% endfor %} -->
+
+
+                <!-- {% else %} -->
+                    <iframe src="{{ embed }}"></iframe><br><br>
+                    <form action="{% url 'download_video' %}" method="post">
+                        {% for stream in streams %}
+                            <a href="{{watch_url}}{{stream.resolution}}" type="submit">{{ stream.resolution }}{{ stream.filesize_approx|filesizeformat}}{{ stream.mime_type}}</a>
+                    </form>
+                    <!-- <select name="single-resolution">
+                        <option value="default">Select resolution</option>
+                        {% for resolution in streams|map(attribute='resolution') %}
+                        <option value="{{ resolution }}">{{ resolution }}</option>
+                        {% endfor %}
+                    </select><br><br>
+                    {% endif %}
+                    <a href="{{ url }}" type="submit">Download Selected</a> -->
+        </div>
+    </div>
+{%endblock%}
+

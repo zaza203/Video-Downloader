@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.png">
+    <!--Link to use the google icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://code.iconify.design/iconify-icon/1.0.4/iconify-icon.min.js"></script>
+</head>
+<body>
+    <center>
+    <!--Header-->
+    <div class= "main_title">
+        <h1>Youtube Video Downloader</h1>
+    </div>
+
+    <div class = "main_conatiner">
+        <h2>Video Downloaded Successfully</h2>
+        <p>Check the video in the folder of path C:/Downloads</p>
+
+    <!--Go to home-->
+    <div class="home">
+        <button id="homeButton" class="button">
+            <div class = "home_icon">
+            <iconify-icon icon="material-symbols:home-outline-rounded"></iconify-icon>
+            </div>
+        </button>
+    </div>
+    <div class = "hide">Return to Home</div>
+    </div>       
+    </center>
+    
+</body>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    
+    body{
+        background-color: #B7F2BD;
+    }
+    
+    .main_title h1{
+        font-size: 50px;
+        font-weight: 700;
+        color: #DE2824;
+        margin-top: 100px;
+        font-family: Oswald;
+    }
+    .main_conatiner{
+        margin-top: 20px;
+        background-color: #ffff;
+        width: 70%;
+        height: 200px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 4px #313131;
+    }
+    .main_conatiner h2{
+        font-size: 25px;
+        font-weight: 700;
+        color: #49DA60;
+        padding-top: 20px;
+        font-family: Montserrat;
+    }
+    .main_conatiner p{
+        font-size: 15px;
+        font-weight: 700;
+        color: black;
+        padding-top: 20px;
+        font-family: Montserrat;
+    }
+
+    .home{
+        margin-top: 20px;
+    }
+    button#homeButton{
+        height: 40px;
+        width: 100px;
+        background-color: #39DEA3;
+        color: white;
+        font-weight: 500;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        font-family: Montserrat;
+        box-shadow: 1px 1px 4px #313131;
+    }
+    button#homeButton:hover{
+        background-color: #49DA60;
+    }
+    .home_icon{
+        display: inline-block;
+    }
+    
+    iconify-icon{
+        font-size: 20px;
+        margin-left: 5px;
+    }
+    .hide{
+        display: none;
+    }
+    .home:hover + .hide{
+        display: inline-block;
+        font-size: 15px;
+        font-family: Montserrat;
+        font-weight: 500;
+        color: #39DEA3;
+        margin-left: 5cm;
+        margin-top: 10px;
+    }
+
+</style>
+
+<script>
+    document.getElementById("homeButton").onclick = function () {
+        location.href = "{% url 'home' %}";
+
+        location.href.reload();
+        return false;
+    };
+
+    </script>
+</html>
